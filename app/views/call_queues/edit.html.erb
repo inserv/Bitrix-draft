@@ -1,0 +1,38 @@
+<h2>Настройки очереди для номера <%= @cq.phone_number.number%></h2>
+
+<h3>Группа очереди: <%= @cq.group.group_name %></h3>
+<table>
+	<tr>
+		<th>Порядок</th>
+		<th>Пользователь</th>
+		<th>Телефон</th>
+	</tr>
+	<% @agents.each do |agent|%>
+	<% @user = agent.user %>
+	<tr>
+		<td><%= agent.group_priority %></td>
+		<td><%= @user.first_name %> <%= @user.last_name %></td> 
+		<td><%= @user.phone %></td>
+	</tr>
+	<% end %>
+</table>
+<br>
+Время ожидания <%=@cq.group.ring_timeout%> секунд<br><br>
+<%= form_for([:account,:phone_number, @cq]) do |f| %>
+<%= f.label "Изменить группу:" %>
+<%= f.select :group_id, options_from_collection_for_select(@groups, "id", "group_name", @cq.group_id)%><br>
+<%= f.label "Информирование о месте в очереди:" %><br>
+<%= f.radio_button :place_inform, true  %>
+<%= f.label "Вкл" %>
+<%= f.radio_button :place_inform, false %>
+<%= f.label "Выкл" %><br><br>
+<%= f.label "Музыка во время ожидания:" %><br>
+<%= f.file_field :music_on_hold %><br><br>
+
+<%= f.label "Ииспользовать голосовое меню:" %><br>
+<%= radio_button "ivr",:ivr_enabled, true, :checked => @cq.phone_number.ivr_enabled %>
+<%= f.label "Да" %>
+<%= radio_button "ivr",:ivr_enabled, false, :checked => !@cq.phone_number.ivr_enabled %>
+<%= f.label "Нет" %><br><br>
+<%= f.submit "Сохранить"%>
+<% end %>

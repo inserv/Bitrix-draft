@@ -1,0 +1,10 @@
+<%= flash[:error]%>
+<%= form_tag user_session_path do %>
+<p><%= label :account, :id, 'Аккаунт:'%>
+<%= text_field :account, :id %></p>
+<p><%= label :user_session, :login, 'Логин:' %>
+<%= text_field :user_session, :login %></p>
+<p><%= label :user_session, :password, 'Пароль:'%>
+<%= password_field :user_session, :password %></p>
+<%= submit_tag "Вход" %>
+<% end %>

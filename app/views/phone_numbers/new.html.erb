@@ -1,0 +1,35 @@
+<h2>Выбор номеров для <%=current_account.name%></h2>
+<h3>Свободные номера 8-800:</h3> 
+<%= form_tag(account_phone_numbers_path) do %>
+<table>
+	<tr>
+		<th>Номер</th>
+		<th>Выбрать</th>
+	</tr>	
+	<% @nf.each_with_index do |nf, index| %>
+	<tr>	
+		<td><%= nf.number %></td>
+		<td><%= check_box_tag "nat_id[]", nf.id, checked = false,
+		{:id=>"ch_nf#{index+1}", :onClick=>"return KeepCount(#{@nf.count},#{nat_allowed},'ch_nf')"}%></td>
+	</tr>
+	<% end %>
+</table>
+<h3>Свободные номера:</h3>
+<table>
+	<tr>
+		<th>Номер</th>
+		<th>Выбрать</th>
+	</tr>
+	<% @sf.each_with_index do |sf, index| %>
+	<tr>
+		<td><%= sf.number %></td>
+		<td><%= check_box_tag "serv_id[]", sf.id, checked=false,
+		{:id=>"ch_sf#{index+1}", :onClick=>"return KeepCount(#{@sf.count},#{serv_allowed},'ch_sf')"} %></td>	
+	</tr>
+	<% end %>
+</table>
+<br>
+<%= submit_tag "Сохранить" %>
+<% end %>
+<%= javascript_include_tag "custom.js" %>
+

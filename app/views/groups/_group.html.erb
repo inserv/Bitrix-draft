@@ -1,0 +1,7 @@
+<h3>Параметры группы</h3>
+<%= f.label "Имя группы" %><br />
+<%= f.text_field :group_name %><br />
+<%= f.label "Тип группы" %><br />
+<%= f.select :group_type, options_for_select([["Парралельная", "parallel"],["Последовательная", "sequential"]]) %><br />
+<%= f.label "Время ожидания" %><br />
+<%= f.text_field :ring_timeout %><br />

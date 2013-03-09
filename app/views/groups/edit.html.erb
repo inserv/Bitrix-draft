@@ -1,0 +1,42 @@
+<h2>Редактирование группы <%=@group.group_name %></h2>
+<%= form_for [:account, @group]  do |f| %>
+<%= render 'group', f: f %>
+<h3>Выберите пользователей чтобы удалить</h3>
+<table>
+	<tr>
+		<th>Логин</th>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Порядок в группе</th>
+		<th>Удалить из группы</th>
+	</tr>
+<% @agents.each do |agent| %>
+	<% @user = agent.user %>
+	<tr>
+		<td><%= @user.login %></td>
+		<td><%= @user.first_name %></td>
+		<td><%= @user.last_name %></td>
+		<td><%= text_field_tag "agent[#{agent.id}]", agent.group_priority %></td>
+		<td><%= check_box_tag "user_to_del[]", @user.id %>	
+	</tr>
+<% end %>
+</table>
+<h3>Выберите пользователей чтобы добавить</h3>
+<table>
+	<tr>
+		<th>Логин</th>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Добавить в группу</th>
+	</tr>
+	<% @users.each do |u| %>
+	<tr>
+		<td><%= u.login %></td>
+		<td><%= u.first_name %></td>
+		<td><%= u.last_name %></td>
+		<td><%= check_box_tag "user_to_add[]", u.id %></td>
+	</tr>
+	<% end %>
+</table>
+<%= f.submit "Сохранить" %>
+<% end %>

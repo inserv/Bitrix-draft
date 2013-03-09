@@ -1,0 +1,23 @@
+<%= flash[:error]%>
+<h2>Создание группы для <%=current_account.name%></h2>
+<%= form_for [:account, @group]  do |f| %>
+<%= render 'group', f: f %>
+<h3>Добавление пользователей в группу</h3>
+<table>
+<tr>
+	<th>Логин</th>
+	<th>Имя</th>
+	<th>Фамилия</th>
+	<th>Добавить в группу</th>
+</tr>
+<% @users.each do |u| %>
+<tr>
+	<td><%= u.login %></td>
+	<td><%= u.first_name %></td>
+	<td><%= u.last_name %></td>
+	<td><%= check_box_tag "user_to_add[]", u.id %></td>
+</tr>
+<% end %>
+</table>
+<%= f.submit "Сохранить" %>
+<% end %>

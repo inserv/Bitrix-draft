@@ -1,0 +1,40 @@
+<header>
+	<nav id='menu'>
+	<ul>
+		<li class='has-sub '><%= link_to content_tag(:span, "Номера"), '#' %>
+			<ul>
+			<% account_numbers.each do |pn| %>
+			   <li class='has-sub '><%= link_to content_tag(:span, "#{pn.number}"), '#' %>
+				  <ul>
+					 <li><%= link_to content_tag(:span, "Приветствия"), 
+							 account_phone_number_call_times_path(current_account.id, pn.id), {:method => :post} %></li>
+					 <li><%= link_to content_tag(:span, "Очередь"),
+					         account_phone_number_call_queues_path(current_account.id, pn.id), {:method => :post} %></li>
+					<% if pn.ivr_enabled == true %> 
+					<li><%= link_to content_tag(:span, "Голосовое меню"),
+							 account_phone_number_call_menus_path(current_account.id, pn.id), {:method => :post} %></li>
+					<% end %>
+				  </ul>
+				</li>    
+			<% end %>
+			<% if !(nat_allowed == 0 && serv_allowed == 0) %>
+		  <li><%= link_to content_tag(:span, "Добавить номер"), new_account_phone_number_path(current_account.id) %></li>
+			<% end %>
+			</ul>
+		</li>
+		<li class='has-sub '><%= link_to content_tag(:span, "Пользователи"), account_users_path(current_account.id) %>
+			<ul>
+				<li><%= link_to content_tag(:span, "Новый пользователь"), new_account_user_path(current_account.id) %></li>
+			</ul>
+		</li>
+		<li class='has-sub '><%= link_to content_tag(:span, "Группы"), account_groups_path(current_account.id) %>
+			<ul>
+				<li><%= link_to content_tag(:span, "Новая группа"), new_account_group_path(current_account.id) %></li>
+			</ul>
+		</li>
+		<li><%= link_to content_tag(:span, "Статистика"), '#' %></li>
+		<li><%= link_to content_tag(:span, "Записи речи"), '#' %></li>
+		<li><%= link_to content_tag(:span, "Выход"), '/logout' %></li>
+	</ul>
+	</nav>
+</header>

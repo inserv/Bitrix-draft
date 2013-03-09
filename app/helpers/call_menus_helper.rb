@@ -1,0 +1,2 @@
+module CallMenusHelper
+end

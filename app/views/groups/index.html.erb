@@ -1,0 +1,19 @@
+<h2>Список групп <%=current_account.name%></h2>
+<table>
+	<tr>
+		<th>Имя группы</th>
+		<th>Тип группы</th>
+		<th>Время ожидания</th>
+		<th>Редактировать</th>
+		<th>Удалить</th>
+	</tr>
+	<% @groups.each do |g| %>
+	<tr>
+		<td><%= g.group_name %></td>
+		<td><%= g.group_type %></td>
+		<td><%= g.ring_timeout %></td>
+		<td><%= link_to "Изменить", edit_account_group_path(params[:account_id], g.id) %></td>
+		<td><%= link_to "Удалить", account_group_path(params[:account_id], g.id), :method => :delete %></td>	
+	</tr>
+	<% end%>
+</table>

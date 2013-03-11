@@ -18,3 +18,8 @@ users.each do |row|
   @user.password_confirmation = row[:password]
   @user.save!
 end
+
+10.times do
+  PhoneNumber.create!(:number_type => 0,
+                      :number => sprintf("8800%07d",rand(9999999)))
+end

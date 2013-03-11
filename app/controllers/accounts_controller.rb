@@ -7,7 +7,6 @@ class AccountsController < ApplicationController
   def show
     if new_account?
        redirect_to edit_account_user_path(params[:id], current_account.users.first.id)
-     # redirect_to new_account_phone_number_path(params[:id])
     end
   end
 

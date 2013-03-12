@@ -45,6 +45,7 @@ FactoryGirl.define do
   factory :agent, class: User do |u|
     u.login { generate(:agent) }
 	u.password '12345'
+	u.password_confirmation '12345'
 	u.account_id { generate(:account) }
 	u.email "agent@example.com"
 	u.phone { generate(:mobile_num) }

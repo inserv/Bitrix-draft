@@ -14,36 +14,46 @@
 <%= f.label "Всегда играть приветствие для не рабочего времени" %><br>
 
 
-<h3>Таблица рабочего времени</h3> 
+<h3>Часы Работы</h3> 
 <table border=1>
 	<tr>
-		<th>Время</th>
-		<th>Понедельник</th>
-		<th>Вторник</th>
-		<th>Среда</th>
-		<th>Четверг</th>
-		<th>Пятница</th>	
-		<th>Суббота</th>	
-		<th>Воскресенье</th>
+		<th>День Недели</th>
+		<th>Начало</th>
+		<th>Конец</th>
 	</tr>
 	<tr>
-		<td>Начало</td>
+		<td>Понедельник</td>
 		<td><%= f.text_field :mon_start1 %></td>
-		<td><%= f.text_field :tues_start1 %></td>
-		<td><%= f.text_field :wed_start1 %></td>
-		<td><%= f.text_field :thu_start1 %></td>
-		<td><%= f.text_field :fri_start1 %></td>
-		<td><%= f.text_field :sat_start1 %></td>
-		<td><%= f.text_field :sun_start1 %></td>
+		<td><%= f.text_field :mon_stop1 %></td>
 	</tr>
 	<tr>
-		<td>Конец</td>
-		<td><%= f.text_field :mon_stop1 %></td>
+		<td>Вторник</td>
+		<td><%= f.text_field :tues_start1 %></td>
 		<td><%= f.text_field :tues_stop1 %></td>
+	</tr>
+	<tr>
+		<td>Среда</td>
+		<td><%= f.text_field :wed_start1 %></td>
 		<td><%= f.text_field :wed_stop1 %></td>
+	</tr>
+	<tr>
+		<td>Четверг</td>
+		<td><%= f.text_field :thu_start1 %></td>
 		<td><%= f.text_field :thu_stop1 %></td>
+	</tr>
+	<tr>
+		<td>Пятница</td>
+		<td><%= f.text_field :fri_start1 %></td>
 		<td><%= f.text_field :fri_stop1 %></td>
+	</tr>
+	<tr>
+		<td>Суббота</td>
+		<td><%= f.text_field :sat_start1 %></td>
 		<td><%= f.text_field :sat_stop1 %></td>
+	</tr>
+	<tr>
+		<td>Воскресенье</td>
+		<td><%= f.text_field :sun_start1 %></td>
 		<td><%= f.text_field :sun_stop1 %></td>
 	</tr>
 </table>

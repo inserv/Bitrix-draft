@@ -1,8 +1,8 @@
 5.times do
   @account = FactoryGirl.create(:account)
-  @admin = FactoryGirl.create(:admin)
+  @admin = FactoryGirl.create(:admin, :account_id => @account.id)
   10.times do
-    FactoryGirl.create(:agent)
+    FactoryGirl.create(:agent, :account_id => @account.id)
   end
 end
 

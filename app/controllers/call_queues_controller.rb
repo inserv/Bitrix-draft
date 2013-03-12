@@ -2,12 +2,11 @@
 class CallQueuesController < ApplicationController
   
   def create
-    @current_phone = PhoneNumber.find(params[:phone_number_id])
-    if @current_phone.call_queue.blank?
+    if PhoneNumber.find(params[:phone_number_id]).call_queue.blank?
       @cq=CallQueue.new(:phone_number_id => params[:phone_number_id], :group_id => current_account.groups.first.id)
       @cq.save
     end
-    @cq_id = @current_phone.call_queue.id
+    @cq_id = PhoneNumber.find(params[:phone_number_id]).call_queue.id
     redirect_to edit_account_phone_number_call_queue_path(params[:account_id],params[:phone_number_id], @cq_id)
   end
   

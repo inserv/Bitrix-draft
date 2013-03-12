@@ -2,12 +2,11 @@
 class CallMenusController < ApplicationController
   
   def create
-      @current_phone = PhoneNumber.find(params[:phone_number_id]) 
-      if @current_phone.call_menu.blank?
+      if PhoneNumber.find(params[:phone_number_id]).call_menu.blank?
          @cm=CallMenu.new(:phone_number_id => params[:phone_number_id])
          @cm.save
       end
-      @cm_id = @current_phone.call_menu.id
+      @cm_id = PhoneNumber.find(params[:phone_number_id]).call_menu.id
       redirect_to edit_account_phone_number_call_menu_path(params[:account_id],params[:phone_number_id], @cm_id)
   end
   

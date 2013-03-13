@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 gem 'authlogic', '3.2.0'
 gem 'jquery-rails'
 gem 'factory_girl'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

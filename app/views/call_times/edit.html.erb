@@ -1,9 +1,9 @@
-<h2>Приветствия для номера <%=@ct.phone_number.number%></h2>
-<%= form_for([:account,:phone_number, @ct]) do |f| %>
+<h2>Приветствия для номера <%= @current_phone.number %></h2>
+<%= form_for(:call_time, {:method => :put}) do |f| %>
 <%= f.label "Приветствие для рабочего времени:" %><br>
-<%= f.file_field :greating_whrs %><br>
+<%= f.file_field :greeting_whrs %><br>
 <%= f.label "Приветствие для не рабочего времени:" %><br>
-<%= f.file_field :greating_afthrs %><br>
+<%= f.file_field :greeting_afthrs %><br>
 <%= f.label "Приветствие по умолчанию:" %><br>
 
 <%= f.radio_button :default_override, false %>
@@ -23,38 +23,38 @@
 	</tr>
 	<tr>
 		<td>Понедельник</td>
-		<td><%= f.text_field :mon_start1 %></td>
-		<td><%= f.text_field :mon_stop1 %></td>
+		<td><%= f.time_select :mon_start1, { :default => @ct.mon_start1, :include_seconds => false } %></td>
+		<td><%= f.time_select :mon_stop1, { :default => @ct.mon_stop1, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Вторник</td>
-		<td><%= f.text_field :tues_start1 %></td>
-		<td><%= f.text_field :tues_stop1 %></td>
+		<td><%= f.time_select :tues_start1, { :default => @ct.tues_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :tues_stop1, { :default => @ct.tues_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Среда</td>
-		<td><%= f.text_field :wed_start1 %></td>
-		<td><%= f.text_field :wed_stop1 %></td>
+		<td><%= f.time_select :wed_start1, { :default => @ct.wed_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :wed_stop1, { :default => @ct.wed_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Четверг</td>
-		<td><%= f.text_field :thu_start1 %></td>
-		<td><%= f.text_field :thu_stop1 %></td>
+		<td><%= f.time_select :thu_start1, { :default => @ct.thu_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :thu_stop1, { :default => @ct.thu_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Пятница</td>
-		<td><%= f.text_field :fri_start1 %></td>
-		<td><%= f.text_field :fri_stop1 %></td>
+		<td><%= f.time_select :fri_start1, { :default => @ct.fri_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :fri_stop1, { :default => @ct.fri_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Суббота</td>
-		<td><%= f.text_field :sat_start1 %></td>
-		<td><%= f.text_field :sat_stop1 %></td>
+		<td><%= f.time_select :sat_start1, { :default => @ct.sat_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :sat_stop1, { :default => @ct.sat_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 	<tr>
 		<td>Воскресенье</td>
-		<td><%= f.text_field :sun_start1 %></td>
-		<td><%= f.text_field :sun_stop1 %></td>
+		<td><%= f.time_select :sun_start1, { :default => @ct.sun_start1, :minute_interval => 5, :include_seconds => false } %></td>
+		<td><%= f.time_select :sun_stop1, { :default => @ct.sun_stop1, :minute_interval => 5, :include_seconds => false } %></td>
 	</tr>
 </table>
 <%= f.submit "Сохранить" %>

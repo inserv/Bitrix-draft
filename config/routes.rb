@@ -5,7 +5,7 @@ Bitrix0App::Application.routes.draw do
     resources :accounts do
       resources :users
       resources :phone_numbers do
-        resources :call_times
+        resource :call_times
         resources :call_menus
         resources :call_queues
       end

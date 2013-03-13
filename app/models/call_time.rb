@@ -4,8 +4,8 @@
 #
 #  id               :integer          not null, primary key
 #  phone_number_id  :integer          not null
-#  greating_whrs    :string(255)      default(""), not null
-#  greating_afthrs  :string(255)      default(""), not null
+#  greeting_whrs    :string(255)      default(""), not null
+#  greeting_afthrs  :string(255)      default(""), not null
 #  mon_start1       :time
 #  mon_stop1        :time
 #  tues_start1      :time
@@ -28,8 +28,6 @@
 #
 
 class CallTime < ActiveRecord::Base
-  
-  
   attr_accessible :default_override, 
                   :default_start1, 
                   :default_stop1, 
@@ -48,9 +46,10 @@ class CallTime < ActiveRecord::Base
                   :tues_stop1, 
                   :wed_start1, 
                   :wed_stop1,
-                  :greating_whrs,
-                  :greating_afthrs
+                  :greeting_whrs,
+                  :greeting_afthrs
   
   belongs_to      :phone_number
-  
+  mount_uploader :greeting_whrs, AudioFileUploader
+  mount_uploader :greeting_afthrs, AudioFileUploader
 end

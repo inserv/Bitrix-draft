@@ -2,23 +2,30 @@
 class CallTimesController < ApplicationController
   
   def create
-    @current_phone = PhoneNumber.find(params[:phone_number_id])
-    if @current_phone.call_time.blank?
-      @ct = CallTime.new(:phone_number_id => params[:phone_number_id])
-      @ct.save
-    end
-    @ct_id = @current_phone.call_time.id
-    redirect_to edit_account_phone_number_call_time_path(params[:account_id],params[:phone_number_id], @ct_id)
+    new_or_edit
   end
   
   def edit
-    @ct=CallTime.find(params[:id])   
+	new_or_edit   
+  end
+  
+  def show
+    new_or_edit
+  end
+  
+  def new_or_edit
+	@current_phone = PhoneNumber.find(params[:phone_number_id])
+	unless @ct = @current_phone.call_time
+		@ct = CallTime.create!(:phone_number_id => @current_phone.id)
+	end
+	render 'edit'
   end
   
   def update
-    @ct = CallTime.find(params[:id])
+	@current_phone = PhoneNumber.find(params[:phone_number_id])
+    @ct = @current_phone.call_time
     @ct.update_attributes(params[:call_time])
-    redirect_to :action => :edit
+    render 'edit'
   end
 
 end

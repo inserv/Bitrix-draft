@@ -4,8 +4,8 @@
 #
 #  id               :integer          not null, primary key
 #  phone_number_id  :integer          not null
-#  greating_whrs    :string(255)      default(""), not null
-#  greating_afthrs  :string(255)      default(""), not null
+#  greeting_whrs    :string(255)      default(""), not null
+#  greeting_afthrs  :string(255)      default(""), not null
 #  mon_start1       :time
 #  mon_stop1        :time
 #  tues_start1      :time

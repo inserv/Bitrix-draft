@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306190827) do
+ActiveRecord::Schema.define(:version => 20130313021957) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                             :null => false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130306190827) do
 
   create_table "call_times", :force => true do |t|
     t.integer  "phone_number_id",                     :null => false
-    t.string   "greating_whrs",    :default => "",    :null => false
-    t.string   "greating_afthrs",  :default => "",    :null => false
+    t.string   "greeting_whrs",    :default => "",    :null => false
+    t.string   "greeting_afthrs",  :default => "",    :null => false
     t.time     "mon_start1"
     t.time     "mon_stop1"
     t.time     "tues_start1"

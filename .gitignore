@@ -13,3 +13,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+# Ignore other unnedded files
+doc/
+*.swp
+*.mp3
+*.wav
+*˜
+.project
+.DS Store
+

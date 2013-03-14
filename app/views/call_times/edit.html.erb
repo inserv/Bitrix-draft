@@ -6,11 +6,11 @@
 <%= f.file_field :greeting_afthrs %><br>
 <%= f.label "Приветствие по умолчанию:" %><br>
 
-<%= f.radio_button :default_override, false %>
+<%= radio_button "def_ovr", :default_override, 0, :checked => def_ovr[0] %>
 <%= f.label "Выкл" %><br>
-<%= f.radio_button :default_override, true  %>
+<%= radio_button "def_ovr", :default_override, 1, :checked => def_ovr[1]  %>
 <%= f.label "Всегда играть приветствие для рабочего времени" %><br>
-<%= f.radio_button :default_override, true %>
+<%= radio_button "def_ovr", :default_override, 2, :checked => def_ovr[2] %>
 <%= f.label "Всегда играть приветствие для не рабочего времени" %><br>
 
 

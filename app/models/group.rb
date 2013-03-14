@@ -21,4 +21,6 @@ class Group < ActiveRecord::Base
   has_many        :agents
   has_many        :users, :through => :agents
   
+  validates :group_name,         :presence => true
+  
 end

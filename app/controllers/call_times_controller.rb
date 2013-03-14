@@ -19,10 +19,19 @@ class CallTimesController < ApplicationController
 		@ct = CallTime.create!(:phone_number_id => @current_phone.id)
 	end
 	render 'edit'
-  end
+  end  
   
   def update
-	@current_phone = PhoneNumber.find(params[:phone_number_id])
+    case params[:def_ovr][:default_override]
+      when "0" then params[:call_time][:default_override]=false
+      when "1" then params[:call_time][:default_override]=true
+                    params[:call_time][:default_start1]="00:00"
+                    params[:call_time][:default_stop1]="00:00"
+      when "2" then params[:call_time][:default_override]=true
+                    params[:call_time][:default_start1]="00:01"
+                    params[:call_time][:default_stop1]="23:59"
+    end
+	  @current_phone = PhoneNumber.find(params[:phone_number_id])
     @ct = @current_phone.call_time
     @ct.update_attributes(params[:call_time])
     render 'edit'

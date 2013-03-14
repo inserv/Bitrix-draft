@@ -1,8 +1,5 @@
 <h2><%= page_caption %></h2>
 <%= form_for [:account, @user]  do |f| %>
-<% if @user.new_record? || current_user_session.user.level == 3 %>
-<%= render 'password', f: f %>
-<% end %>
 <h3>Параметры пользователя</h3>
 <%= f.label "Имя" %><br />
 <%= f.text_field :first_name %><br />

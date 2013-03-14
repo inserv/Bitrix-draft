@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
   
   validates :phone,         :presence => true,
                             :format => { :with => phone_regex }
+  validates :first_name,    :presence => true
+  validates :last_name,     :presence => true
 
   
   acts_as_authentic do |config|

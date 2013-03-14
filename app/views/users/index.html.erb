@@ -1,23 +1,19 @@
 <h2>Список пользователей <%=current_account.name%></h2>
 <table>
 	<tr>
-		<th>Логин</th>
 		<th>Имя</th>
 		<th>Фамилия</th>
 		<th>Email</th>
 		<th>Телефон</th>
-		<th>Level</th>
 		<th>Редактировать</th>
 		<th>Удалить</th>
 	</tr>
 <% @users.each do |u| %>
 	<tr>
-		<td><%= u.login %>
 		<td><%= u.first_name %></td>
 		<td><%= u.last_name %></td>
 		<td><%= u.email %></td>
 		<td><%= u.phone %></td>
-		<td><%= u.level %></td>
 		<td><%= link_to "Изменить", edit_account_user_path(params[:account_id], u.id) %></td>
 		<td><%= link_to "Удалить", account_user_path(params[:account_id], u.id), :method => :delete %></td>	
 	</tr>

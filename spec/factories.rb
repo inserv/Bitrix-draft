@@ -12,6 +12,14 @@ FactoryGirl.define do
     "agent#{n}"
   end
   
+  sequence :first_name do |n|
+    "name#{n}"
+  end
+  
+  sequence :last_name do |n|
+    "family#{n}"
+  end
+  
   sequence :account do |n|
 	10000 + n
   end
@@ -38,6 +46,8 @@ FactoryGirl.define do
 	u.password '12345'
 	u.password_confirmation '12345'
 	u.account_id { generate(:account) }
+	u.first_name "admin"
+	u.last_name "admin"
 	u.email "admin@example.com"
 	u.phone { generate(:mobile_num) }
   end
@@ -47,6 +57,8 @@ FactoryGirl.define do
 	u.password '12345'
 	u.password_confirmation '12345'
 	u.account_id { generate(:account) }
+	u.first_name { generate(:first_name) }
+	u.last_name { generate(:last_name) }
 	u.email "agent@example.com"
 	u.phone { generate(:mobile_num) }
   end

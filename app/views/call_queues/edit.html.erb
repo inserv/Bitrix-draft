@@ -18,7 +18,7 @@
 </table>
 <br>
 Время ожидания <%=@cq.group.ring_timeout%> секунд<br><br>
-<%= form_for([:account,:phone_number, @cq]) do |f| %>
+<%= form_for(@cq, :url => { :action => "update" }) do |f| %>
 <%= f.label "Изменить группу:" %>
 <%= f.select :group_id, options_from_collection_for_select(@groups, "id", "group_name", @cq.group_id)%><br>
 <%= f.label "Информирование о месте в очереди:" %><br>

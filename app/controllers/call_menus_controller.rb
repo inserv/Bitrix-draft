@@ -2,23 +2,28 @@
 class CallMenusController < ApplicationController
   
   def create
-      @current_phone = PhoneNumber.find(params[:phone_number_id]) 
-      if @current_phone.call_menu.blank?
-         @cm=CallMenu.new(:phone_number_id => params[:phone_number_id])
-         @cm.save
-      end
-      @cm_id = @current_phone.call_menu.id
-      redirect_to edit_account_phone_number_call_menu_path(params[:account_id],params[:phone_number_id], @cm_id)
+    @current_phone = PhoneNumber.find(params[:phone_number_id])
+    unless @cm = @current_phone.call_menu
+      @cm = CallMenu.create!(:phone_number_id => @current_phone.id)
+    end
+    redirect_to :action => :edit  
   end
   
   def edit
-    @cm = CallMenu.find(params[:id])
-    @groups=current_account.groups    
+    @cm = PhoneNumber.find(params[:phone_number_id]).call_menu
+    @groups=current_account.groups  
   end
   
   def update
-    @cm = CallMenu.find(params[:id])
-    @cm.update_attributes(params[:call_menu])
+    require 'FileUtils'
+    if !params[:call_menu][:message_file].blank?
+      tmp = params[:call_menu][:message_file].tempfile
+      @save_path = File.join("public", "#{params[:account_id]}_"+"#{params[:phone_number_id]}_"+"#{params[:id]}_"+"message.mp3")
+      FileUtils.cp tmp.path, @save_path
+      params[:call_menu][:menu_message] = @save_path
+    end
+    @cm = PhoneNumber.find(params[:phone_number_id]).call_menu
+    @cm.update_attributes(params[:call_menu].except(:message_file))
     redirect_to :action => :edit
   end
   

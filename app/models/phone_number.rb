@@ -23,7 +23,7 @@ class PhoneNumber < ActiveRecord::Base
   has_one           :call_time
   has_one           :call_menu
   
-  scope :serv_free, -> {where(number_type: 0, account_id: 0)}
-  scope :nat_free, -> {where(number_type: 1, account_id: 0)}
+  scope :serv_free, -> {where(number_type: 1, account_id: 0)}
+  scope :nat_free, -> {where(number_type: 0, account_id: 0)}
   
 end

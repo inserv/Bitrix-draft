@@ -1,12 +1,16 @@
 <h2>Настройки голосового меню для номера <%=@cm.phone_number.number%></h2>
-<%= form_for([:account,:phone_number, @cm]) do |f| %>
+<%= form_for(@cm, :url => { :action => "update" }) do |f| %>
 <%= f.label "Файл голосового меню" %><br>
-<%= f.file_field :menu_message %><br>
+<%= f.file_field :message_file %><br>
+<%= f.label "Прослушать текущий файл:"%>
+<audio controls>
+  <source src="<%=@cm.menu_message.sub('public','')%>" type="audio/mpeg">
+</audio><br>
 <%= f.label "Группа для первого пункта меню:" %>
-<%= f.select :menu_key1, options_from_collection_for_select(@groups, "id" , "group_name", @cm.menu_key1)%><br>
+<%= f.select :menu_key1, options_for_select(selectable_groups, @cm.menu_key1)%><br>
 <%= f.label "Группа для второго пункта меню:" %>
-<%= f.select :menu_key2, options_from_collection_for_select(@groups, "id", "group_name", @cm.menu_key2)%><br>
+<%= f.select :menu_key2, options_for_select(selectable_groups, @cm.menu_key2)%><br>
 <%= f.label "Группа для третьего пункта меню:" %>
-<%= f.select :menu_key3, options_from_collection_for_select(@groups, "id", "group_name", @cm.menu_key3)%><br>
+<%= f.select :menu_key3, options_for_select(selectable_groups, @cm.menu_key3) %><br>
 <%= f.submit "Сохранить" %>
 <% end %>

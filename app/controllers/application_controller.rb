@@ -21,11 +21,11 @@ class ApplicationController < ActionController::Base
   end
 
   def nat_allowed
-    current_account.nat_number_count - account_numbers.where(:number_type => 1).count
+    current_account.nat_number_count - account_numbers.where(:number_type => 0).count
   end
 
   def serv_allowed
-    current_account.serv_number_count - account_numbers.where(:number_type => 0).count
+    current_account.serv_number_count - account_numbers.where(:number_type => 1).count
   end  
 
   def account_numbers

@@ -6,7 +6,7 @@ class CallTimesController < ApplicationController
   end
   
   def edit
-	new_or_edit   
+	  new_or_edit   
   end
   
   def show

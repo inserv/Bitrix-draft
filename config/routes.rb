@@ -4,12 +4,12 @@ Bitrix0App::Application.routes.draw do
     resource :agents
     resources :accounts do
       resources :users
+      resources :groups
       resources :phone_numbers do
         resource :call_times
-        resources :call_menus
-        resources :call_queues
+        resource :call_menus
+        resource :call_queues
       end
-      resources :groups
     end
     
     match "/login",  :controller => "user_sessions", :action => "new"

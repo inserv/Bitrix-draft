@@ -11,7 +11,8 @@
 #
 
 class Agent < ActiveRecord::Base
-  
+  include SwitchConnector
+  include SwitchConnector
   attr_accessible :group_id, 
                   :group_priority, 
                   :user_id

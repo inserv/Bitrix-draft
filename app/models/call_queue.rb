@@ -12,7 +12,7 @@
 #
 
 class CallQueue < ActiveRecord::Base
-  
+  include SwitchConnector
   attr_accessible :group_id, 
                   :music_on_hold, 
                   :phone_number_id,

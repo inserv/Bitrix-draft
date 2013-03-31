@@ -12,6 +12,7 @@
 #
 
 class Group < ActiveRecord::Base
+	include SwitchConnector
   attr_accessible :account_id,
                   :group_name, 
                   :group_type,

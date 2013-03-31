@@ -13,7 +13,7 @@
 #
 
 class PhoneNumber < ActiveRecord::Base
-  
+  include SwitchConnector
   attr_accessible   :number, 
                     :account_id,
                     :ivr_enabled

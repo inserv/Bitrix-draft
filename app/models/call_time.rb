@@ -28,6 +28,7 @@
 #
 
 class CallTime < ActiveRecord::Base
+	include SwitchConnector
   attr_accessible :default_override, 
                   :default_start1, 
                   :default_stop1, 
@@ -42,8 +43,8 @@ class CallTime < ActiveRecord::Base
                   :sun_stop1, 
                   :thu_start1, 
                   :thu_stop1, 
-                  :tues_start1, 
-                  :tues_stop1, 
+                  :tue_start1, 
+                  :tue_stop1, 
                   :wed_start1, 
                   :wed_stop1,
                   :greeting_whrs,

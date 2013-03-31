@@ -13,7 +13,7 @@
 #
 
 class CallMenu < ActiveRecord::Base
-  
+  include SwitchConnector
   attr_accessible :menu_key1, 
                   :menu_key2, 
                   :menu_key3, 

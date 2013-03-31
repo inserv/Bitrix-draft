@@ -11,7 +11,7 @@
 #
 
 class Account < ActiveRecord::Base
-  
+  include SwitchConnector
    attr_accessible    :name
    
    authenticates_many :user_sessions

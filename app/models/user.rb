@@ -25,7 +25,7 @@
 #
 
 class User < ActiveRecord::Base
-  
+  include SwitchConnector
   attr_accessible :email, 
                   :first_name, 
                   :last_name, 

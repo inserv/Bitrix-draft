@@ -26,3 +26,12 @@ production:
 
 cucumber:
   <<: *test
+
+vicidial_db:
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  port: 3306
+  database: asterisk
+  username: cron
+  password: "1234"
